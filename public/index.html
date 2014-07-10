@@ -41,32 +41,34 @@
 
 <!--<div id="mocha"></div>-->
 <div id="container"></div>
+<div id="resultContainer"></div>
 
 <script type="text/javascript">
 
     (function (window, document, requirejs) {
 
         var require = requirejs({
-                    paths: {
-                        flow: "js/lib/flow",
-                        json: "js/plugin/json",
-                        JSON: "js/lib/json2",
-                        underscore: "js/lib/underscore"
+                paths: {
+                    flow: "js/lib/flow",
+                    json: "js/plugin/json",
+                    JSON: "js/lib/json2",
+                    underscore: "js/lib/underscore"
+                },
+                shim: {
+                    flow: {
+                        exports: "flow"
                     },
-                    shim: {
-                        flow: {
-                            exports: "flow"
-                        },
-                        JSON: {
-                            exports: "JSON"
-                        },
-                        underscore: {
-                            exports: "_"
-                        }
+                    JSON: {
+                        exports: "JSON"
+                    },
+                    underscore: {
+                        exports: "_"
                     }
-                }),
-                container = document.getElementById("container"),
-                mocha = document.getElementById("mocha");
+                }
+            }),
+            container = document.getElementById("container"),
+            mocha = document.getElementById("mocha"),
+            resultContainer = document.getElementById("resultContainer");
 
         if (typeof JSON !== "undefined") {
             define("JSON", function () {
@@ -77,13 +79,13 @@
         require(["flow", "json!groups", "underscore"], function (flow, groups, _) {
 
             var testGroup,
-                    tests,
-                    testResults = {
-                        errorTests: [],
-                        failedTests: [],
-                        skippedTests: [],
-                        passedTests: []
-                    };
+                tests,
+                testResults = {
+                    errorTests: [],
+                    failedTests: [],
+                    skippedTests: [],
+                    passedTests: []
+                };
 
             // determinate test group from url
             testGroup = /testgroup=([^&]+)/.exec(window.location.search);
@@ -156,8 +158,24 @@
                         });
                 })
                 .exec(function (err) {
-//                    container.style.display = "none";
+                    container.style.display = "none";
                     err && console.error(err);
+
+                    var components = [];
+
+                    for (var key in testResults) {
+                        if (testResults.hasOwnProperty(key)) {
+                            var results = testResults[key];
+                            components.push("<h1>" + key + " (" +  results.length +") </h1>");
+
+                            for (var i = 0; i < results.length; i++) {
+                                var result = results[i];
+                                components.push("<h2>" + result.title + "</h2>");
+                            }
+                        }
+                    }
+
+                    resultContainer.innerHTML = components.join("");
 
                     window.testsCompleted = true;
                     window.testResults = testResults;
