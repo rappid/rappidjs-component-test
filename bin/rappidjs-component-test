@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var yargs = require('yargs');
+var argv = yargs
+    .usage('Usage: $0')
+    .default({
+        p: 8080
+    })
+    .alias({
+        p: 'port'
+    })
+    .describe({
+        p: 'port to listen',
+        help: 'show the help'
+    })
+    .boolean(['help'])
+    .argv;
+
+if (argv.help) {
+    console.log(yargs.help());
+    process.exit(0);
+}
+
+require('..')({
+    port: argv.p
+});
+
