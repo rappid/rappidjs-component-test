@@ -6,8 +6,9 @@ var express = require('express'),
     _ = require('underscore'),
     fs = require('fs');
 
-module.exports = function(options) {
+module.exports = function(options, log) {
     options = options || {};
+    log = log || console.log;
 
     _.defaults(options, {
         port: 8080,
@@ -16,7 +17,7 @@ module.exports = function(options) {
         dir: 'webtest'
     });
 
-    console.log(options);
+    log(options);
     var webTestRoot = path.resolve(options.dir),
         root = __dirname;
 
@@ -45,11 +46,11 @@ module.exports = function(options) {
         "/lib/jquery.js": "public/lib/jquery-1.11.1.min.js"
     };
 
-    console.log("\nregistering routes for component-tests");
+    log("\nregistering routes for component-tests");
     for (var route in staticFiles) {
         if (staticFiles.hasOwnProperty(route)) {
             (function(route) {
-                console.log(route + " -> " + staticFiles[route]);
+                log(route + " -> " + staticFiles[route]);
 
                 app.get(route, function (req, res) {
                     res.sendfile(path.join(root, staticFiles[route]));
@@ -59,12 +60,12 @@ module.exports = function(options) {
     }
 
     var publicPath = path.resolve('public');
-    console.log("\nmaking the public directory available");
-    console.log("public -> " + publicPath);
+    log("\nmaking the public directory available");
+    log("public -> " + publicPath);
     app.use(express.static(publicPath));
 
-    console.log("\nusing the following web test root");
-    console.log(webTestRoot);
+    log("\nusing the following web test root");
+    log(webTestRoot);
     app.use(express.static(webTestRoot, {
         maxAge: 0
     }));
