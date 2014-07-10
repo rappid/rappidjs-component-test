@@ -86,6 +86,7 @@
                                     if (err instanceof window.SkipError) {
                                         results.skippedTests.push(test);
                                     } else {
+                                        test.err = err;
                                         results.failedTests.push(test);
                                     }
                                 });
