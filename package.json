@@ -1,7 +1,7 @@
 {
   "name": "rappidjs-component-test",
   "version": "0.1.0",
-  "description": "",
+  "description": "Run component tests for rappidjs components on phantomjs using mocha.",
   "main": "index.js",
   "dependencies": {
     "yargs": "~1.2.6",
@@ -9,12 +9,27 @@
     "underscore": "~1.6.0",
     "mocha": "~1.20.1",
     "chai": "~1.9.1",
-    "jquery.expect": "~0.1.0"
+    "jquery.expect": "~0.1.0",
+    "phantom": "~0.6.5"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Tony Findeisen <tony@rappidjs.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.20.1"
   },
-  "author": "",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rappid/rappidjs-component-test.git"
+  },
+  "keywords": [
+    "rappidjs",
+    "test",
+    "component",
+    "phantom",
+    "mocha"
+  ],
+  "bugs": {
+    "url": "https://github.com/rappid/rappidjs-component-test/issues"
+  },
+  "homepage": "https://github.com/rappid/rappidjs-component-test"
 }
