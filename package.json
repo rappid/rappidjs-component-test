@@ -1,14 +1,12 @@
 {
   "name": "rappidjs-component-test",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Run component tests for rappidjs components on phantomjs using mocha.",
   "main": "index.js",
   "dependencies": {
     "yargs": "~1.2.6",
     "express": "~4.5.1",
     "underscore": "~1.6.0",
-    "mocha": "~1.20.1",
-    "chai": "~1.9.1",
     "jquery.expect": "~0.1.0",
     "phantom": "~0.6.5"
   },

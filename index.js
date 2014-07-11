@@ -39,9 +39,9 @@ module.exports = function(options, log) {
         "/container.html": "public/container.html",
         "/test/TestApplication.js": "public/test/TestApplication.js",
 
-        "/lib/mocha.js": "node_modules/mocha/mocha.js",
-        "/lib/mocha.css": "node_modules/mocha/mocha.css",
-        "/lib/chai.js": "node_modules/chai/chai.js",
+        "/lib/mocha.js": "public/lib/mocha.js",
+        "/lib/mocha.css": "public/lib/mocha.css",
+        "/lib/chai.js": "public/lib/chai.js",
         "/lib/jquery.expect.js": "node_modules/jquery.expect/jquery.expect.js",
         "/lib/jquery.js": "public/lib/jquery-1.11.1.min.js"
     };
