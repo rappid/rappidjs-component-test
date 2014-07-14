@@ -6,7 +6,7 @@ var express = require('express'),
     _ = require('underscore'),
     fs = require('fs');
 
-module.exports = function(options, log) {
+module.exports = function (options, log) {
     options = options || {};
     log = log || console.log;
 
@@ -45,13 +45,14 @@ module.exports = function(options, log) {
         "/lib/jquery.expect.js": "node_modules/jquery.expect/jquery.expect.js",
         "/lib/jquery.js": "public/lib/jquery-1.11.1.min.js",
         "/lib/jquery-fill.js": "public/lib/jquery-fill.js",
-        "/lib/jquery-fill-select.js": "public/lib/jquery-fill-select.js"
+        "/lib/jquery-fill-select.js": "public/lib/jquery-fill-select.js",
+        "/lib/jquery-mouse-events.js": "public/lib/jquery-mouse-events.js"
     };
 
     log("\nregistering routes for component-tests");
     for (var route in staticFiles) {
         if (staticFiles.hasOwnProperty(route)) {
-            (function(route) {
+            (function (route) {
                 log(route + " -> " + staticFiles[route]);
 
                 app.get(route, function (req, res) {
