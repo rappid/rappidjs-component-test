@@ -43,7 +43,9 @@ module.exports = function(options, log) {
         "/lib/mocha.css": "public/lib/mocha.css",
         "/lib/chai.js": "public/lib/chai.js",
         "/lib/jquery.expect.js": "node_modules/jquery.expect/jquery.expect.js",
-        "/lib/jquery.js": "public/lib/jquery-1.11.1.min.js"
+        "/lib/jquery.js": "public/lib/jquery-1.11.1.min.js",
+        "/lib/jquery-fill.js": "public/lib/jquery-fill.js",
+        "/lib/jquery-fill-select.js": "public/lib/jquery-fill-select.js"
     };
 
     log("\nregistering routes for component-tests");
