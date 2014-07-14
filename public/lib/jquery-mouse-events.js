@@ -7,34 +7,36 @@
     if (!$) return;
 
     function triggerEventOnElement(element, event) {
-        var ev = document.createEvent("MouseEvent");
-        ev.initMouseEvent(
-            event,
-            true /* bubble */, true /* cancelable */,
-            window, null,
-            0, 0, 0, 0, /* coordinates */
-            false, false, false, false, /* modifier keys */
-            0 /*left*/, null
-        );
+        for (var i = 0; i < element.length; i++) {
+            var ev = document.createEvent("MouseEvent");
+            ev.initMouseEvent(
+                event,
+                true /* bubble */, true /* cancelable */,
+                window, null,
+                0, 0, 0, 0, /* coordinates */
+                false, false, false, false, /* modifier keys */
+                0 /*left*/, null
+            );
 
-        element.dispatchEvent(ev);
+            element.get(i).dispatchEvent(ev);
+        }
     }
 
 
     $.fn.click = function () {
-        triggerEventOnElement(this.get(0), "click");
+        triggerEventOnElement(this, "click");
 
         return this;
     };
 
     $.fn.blur = function () {
-        triggerEventOnElement(this.get(0), "blur");
+        triggerEventOnElement(this, "blur");
 
         return this;
     };
 
     $.fn.focus = function () {
-        triggerEventOnElement(this.get(0), "focus");
+        triggerEventOnElement(this, "focus");
 
         return this;
     }
