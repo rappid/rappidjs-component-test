@@ -49,8 +49,15 @@ module.exports = function (grunt) {
                                                     grunt.log.error(obj.tests.length + " tests " + obj.message + ":");
 
                                                     obj.tests.forEach(function(test) {
-                                                        grunt.log.error("\t" + test.title +
-                                                            (test.err ? ": " + test.err.message || test.err : ""))
+
+                                                        if (obj.message === "errored") {
+                                                            grunt.log.error("\t" + test.file +
+                                                                (test.error ? ": " + test.error.message : ""))
+                                                        } else {
+                                                            grunt.log.error("\t" + test.title +
+                                                                (test.err ? ": " + test.err.message || test.err : ""))
+                                                        }
+
                                                     });
                                                 }
                                         });
