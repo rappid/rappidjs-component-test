@@ -170,7 +170,14 @@
 
                             for (var i = 0; i < results.length; i++) {
                                 var result = results[i];
-                                components.push("<h2>" + result.title + "</h2>");
+
+                                if (key === "errorTests") {
+                                    components.push("<h2>" + result.file + "</h2>");
+                                    components.push("<p>" + result.error.toString() + "</p>");
+                                } else {
+                                    components.push("<h2>" + result.title + "</h2>");
+                                }
+
                             }
                         }
                     }
