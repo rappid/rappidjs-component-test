@@ -1,6 +1,6 @@
 {
   "name": "rappidjs-component-test",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Run component tests for rappidjs components on phantomjs using mocha.",
   "main": "index.js",
   "dependencies": {
