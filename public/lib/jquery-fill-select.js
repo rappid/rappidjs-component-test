@@ -22,8 +22,7 @@
     }
 
     $.fn.fillSelect = function (value) {
-        this.find('option').removeAttr('selected');
-        this.find('option[value="' + value + '"]').attr('selected', true);
+        this.get(0).value = value;
 
         fireEvent(this.get(0), "change");
 
